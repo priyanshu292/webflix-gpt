@@ -3,11 +3,16 @@ import usericon from '../assets/usericon.jpg'
 import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { addUser , removeUser } from '../utils/userSlice'
 import { LOGO } from '../utils/constants';
+import { toggleGptSearchView } from '../utils/gptSlice';
+
+
 
 const Header = () => {
+
+  const [showItems, setShowItems] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -18,6 +23,15 @@ const Header = () => {
     .catch((error) => {
       navigate('/error');
     });
+  }
+
+  const handleClick =()=>{
+    setShowItems(!showItems);
+  }
+
+  const handleGptSearchClick =()=>{
+    //Toggle GPT Search 
+    dispatch(toggleGptSearchView());
   }
 
   useEffect(()=>{
@@ -43,10 +57,13 @@ const Header = () => {
       src={LOGO} alt='logo' />
 
     {user && (<div className="flex p-2">
-      <img className="w-12 h-12" 
-      src={usericon} 
-      alt="usericon" />
-      <button onClick={handleSignOut} className='font-bold text-white'>(Sign Out)</button>
+      
+      <button className='bg-gray-600 bg-opacity-70 text-white p-2 m-2 rounded-sm' onClick={handleGptSearchClick}>GPT SEARCH</button>
+
+      <img className="w-12 h-12 m-2" src={usericon} alt="usericon" onClick={handleClick}/>
+
+      {showItems && <button onClick={handleSignOut} className='bg-red-700 h-10 mt-3 rounded-sm px-2 text-white'>Sign Out</button>}
+      
     </div>)}
 
     </div>
