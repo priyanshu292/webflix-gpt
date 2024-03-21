@@ -5,13 +5,13 @@ import backGround from '../assets/backGround.jpg'
 
 const GptSearch = () => {
   return (
-    <div>
-      <div className="fixed -z-10">
+    <div className='bg-black w-screen h-screen'>
+      {/* <div className="fixed -z-10">
         <img
           src={backGround}
           alt="background"
         />
-      </div>
+      </div> */}
       <GptSearchBar />
       <GptMovieSuggestions />
     </div>

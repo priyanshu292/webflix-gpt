@@ -1,12 +1,10 @@
-import { useState } from "react"; 
+
 import { useSelector } from "react-redux";
 import useMovieTrailer from "../hooks/useMovieTrailer";
 
 const VideoBackground = ({ movieId }) => {
 
     const setSoundSlice = useSelector(store => store.sound.setSoundSlice);  
-
-    const [isMuted, setIsMuted] = useState(true); 
 
     const trailerVideo = useSelector(store => store.movies?.trailerVideo);
 

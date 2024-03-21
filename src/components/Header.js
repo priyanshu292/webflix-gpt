@@ -5,10 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { addUser , removeUser } from '../utils/userSlice'
-import { LOGO } from '../utils/constants';
+import { LOGO, SUPPORTED_LANG } from '../utils/constants';
 import { toggleGptSearchView } from '../utils/gptSlice';
 import { IoSearch } from "react-icons/io5";
-
+import { changeLanguage } from '../utils/langSlice';
+import language from '../utils/language';
 
 
 const Header = () => {
@@ -17,7 +18,9 @@ const Header = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = useSelector((store) => store.user)
+  const user = useSelector((store) => store.user);
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
+  const myLang = useSelector((store) => store.language.lang);
 
   const handleSignOut = () => {
     signOut(auth).then(() => {})
@@ -33,6 +36,10 @@ const Header = () => {
   const handleGptSearchClick =()=>{
     //Toggle GPT Search 
     dispatch(toggleGptSearchView());
+  }
+
+  const handleLanguage =(e)=>{
+    dispatch(changeLanguage(e.target.value));
   }
 
   useEffect(()=>{
@@ -58,18 +65,25 @@ const Header = () => {
       src={LOGO} alt='logo' />
 
     {user && (<div className="flex p-2">
+
+      {showGptSearch && (
+        <select className='m-2 rounded-sm pl-2 bg-gray-600 text-white bg-opacity-70 hover:bg-white hover:text-black'
+        onChange={handleLanguage}>
+          {SUPPORTED_LANG.map((i) => <option key={i.id} value={i.id}>{i.name}</option>)}
+        </select>
+      )}
       
       <button className='bg-gray-600 bg-opacity-70 text-white p-2 m-2 rounded-sm hover:bg-white hover:text-black' 
       onClick={handleGptSearchClick}>
         <span className='flex items-center'>
-          <IoSearch className='mr-1'/>
-          GPT Search
+          {!showGptSearch && <IoSearch className='mr-1'/>}
+          {showGptSearch ? language[myLang].home : "GPT Search"}
         </span>
       </button>
 
       <img className="w-12 h-12 m-2" src={usericon} alt="usericon" onClick={handleClick}/>
 
-      {showItems && <button onClick={handleSignOut} className='bg-red-700 h-10 mt-3 rounded-sm px-2 text-white'>Sign Out</button>}
+      {showItems && <button onClick={handleSignOut} className='bg-red-600 m-2 rounded-sm p-2 text-white'>Sign Out</button>}
       
     </div>)}
 
