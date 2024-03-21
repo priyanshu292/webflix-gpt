@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { addUser , removeUser } from '../utils/userSlice'
 import { LOGO } from '../utils/constants';
 import { toggleGptSearchView } from '../utils/gptSlice';
+import { IoSearch } from "react-icons/io5";
 
 
 
@@ -58,7 +59,13 @@ const Header = () => {
 
     {user && (<div className="flex p-2">
       
-      <button className='bg-gray-600 bg-opacity-70 text-white p-2 m-2 rounded-sm' onClick={handleGptSearchClick}>GPT SEARCH</button>
+      <button className='bg-gray-600 bg-opacity-70 text-white p-2 m-2 rounded-sm hover:bg-white hover:text-black' 
+      onClick={handleGptSearchClick}>
+        <span className='flex items-center'>
+          <IoSearch className='mr-1'/>
+          GPT Search
+        </span>
+      </button>
 
       <img className="w-12 h-12 m-2" src={usericon} alt="usericon" onClick={handleClick}/>
 

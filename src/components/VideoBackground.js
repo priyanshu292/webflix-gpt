@@ -11,11 +11,6 @@ const VideoBackground = ({ movieId }) => {
     const trailerVideo = useSelector(store => store.movies?.trailerVideo);
 
     useMovieTrailer(movieId);
-
-    const toggleMute = () => {
-        setIsMuted(!isMuted); 
-    };
-
     return (
         <div className="w-screen">
             <iframe
