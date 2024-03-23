@@ -4,9 +4,11 @@ import GptMovieSuggestions from './GptMovieSuggestions'
 
 const GptSearch = () => {
   return (
-    <div className='bg-black w-screen h-screen -z-10'>
+    <div className='bg-black w-screen h-screen object-cover -z-10'>
+      <div className=''>
       <GptSearchBar />
       <GptMovieSuggestions />
+      </div>
     </div>
   )
 }

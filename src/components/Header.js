@@ -59,12 +59,12 @@ const Header = () => {
   },[])
 
   return (
-    <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between">
+    <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-center md:justify-between">
       <img
-      className="w-44" 
+      className="w-44 mx-auto md:mx-0" 
       src={LOGO} alt='logo' />
 
-    {user && (<div className="flex p-2">
+    {user && (<div className="flex p-2 mx-auto md:mx-0">
 
       {showGptSearch && (
         <select className='m-2 rounded-sm pl-2 bg-gray-600 text-white bg-opacity-70 hover:bg-white hover:text-black'
