@@ -19,3 +19,5 @@ export const SUPPORTED_LANG = [
   { id: "russian", name: "Russian" },
   { id: "german", name: "German" },
 ];
+
+export const OPENAI_KEY = "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";
