@@ -10,10 +10,6 @@ body{
   display: none; 
 }
 
-.browse-container {
-  overflow-x: hidden !important;
-}
-
 ::-webkit-scrollbar {
   width: 6px; 
 }

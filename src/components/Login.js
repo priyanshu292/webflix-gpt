@@ -62,6 +62,7 @@ const Login = () => {
       <Header />
       <div className="fixed">
         <img
+        className="h-screen w-screen object-cover"
           src={backGround}
           alt="background"
         />

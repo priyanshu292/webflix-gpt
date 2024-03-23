@@ -49,3 +49,14 @@
 - TMDB Image CDN URL
 - Made the browse page amazing using Tailwind CSS
 - Custom Hooks
+- GPT Search Page
+- GPT Search Bar
+- Multi Language Feature
+- Get open Ai Api Key
+- Gpt search Api Call
+- fetched GPT movie Suggestions from TMDB
+- created GPT slice and added there
+- Reused MovieList Component to make movie suggestion container
+- Memoization
+- Added .env to gitignore
+- Made the Site Responsive
