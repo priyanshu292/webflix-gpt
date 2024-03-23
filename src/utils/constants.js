@@ -16,7 +16,7 @@ export const SUPPORTED_LANG = [
   { id: "en", name: "English" },
   { id: "hindi", name: "Hindi" },
   { id: "spanish", name: "Spanish" },
-  { id: "russian", name: "Russian" },
+  { id: "russian", name: "Russian" }, 
   { id: "german", name: "German" },
 ];
 
