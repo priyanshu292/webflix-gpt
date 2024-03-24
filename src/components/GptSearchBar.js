@@ -36,7 +36,6 @@ const GptSearchBar = () => {
       }
     
     const gptMovies = gptResults.choices?.[0]?.message?.content.split(",");
-    console.log(gptMovies);
     
     //For each movie i will search TMDB API.
     const promiseArray = gptMovies.map((movie)=>searchMovieTMDB(movie)); //it returns me 5 Promises because search is a async function.
