@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import MovieList from "./MovieList";
+import Shimmer from "./Shimmer";
 
 const GptMovieSuggestions = () => {
   
@@ -8,8 +9,7 @@ const GptMovieSuggestions = () => {
   const { movieNames, movieResults } = gpt;
 
   if (!movieNames && !movieResults) {
-    return null;
-    //TODO
+    return <Shimmer />;
   }
 
   return (
