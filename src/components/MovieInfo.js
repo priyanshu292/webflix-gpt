@@ -12,10 +12,22 @@ const MovieInfo = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true); 
   const movieInfo = useSelector((store) => store.movies.movieInfo);
+  const path = window.location.pathname;
+  console.log(movieInfo);
 
   const fetchMovie = async () => {
     try {
-      const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US`, API_OPTIONS);
+      let apiUrl;
+      if (path.includes('/movie/')) {
+        apiUrl = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
+      } else if (path.includes('/tv/')) {
+        apiUrl = `https://api.themoviedb.org/3/tv/${id}?language=en-US`;
+      } else {
+        // Handle invalid path
+        return;
+      }
+
+      const response = await fetch(apiUrl, API_OPTIONS);
       const data = await response.json();
       dispatch(addMovieInfo(data));
       setLoading(false); 
@@ -27,7 +39,7 @@ const MovieInfo = () => {
 
   useEffect(() => {
     fetchMovie();
-  }, [id]);
+  }, [id, path]);
 
   if (loading) {
     return (

@@ -23,6 +23,10 @@ const Body = () => {
             element: <MovieInfo />
         },
         {
+            path: "/tv/:id",
+            element: <MovieInfo />
+        },
+        {
             path: "/error",
             element: <Errorpage />,
         },
