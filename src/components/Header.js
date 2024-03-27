@@ -11,6 +11,7 @@ import { IoSearch } from "react-icons/io5";
 import { changeLanguage } from '../utils/langSlice';
 import language from '../utils/language';
 import { IoMdHome } from "react-icons/io";
+import webflix from "../assets/webflix.png"
 
 
 const Header = () => {
@@ -62,11 +63,11 @@ const Header = () => {
   },[])
 
   return (
-    <div className="absolute md:absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-center md:justify-between">
+    <div className="absolute md:absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col items-center md:flex-row justify-center md:justify-between">
       <Link to={"/browse"}>
       <img
-      className="w-44 mx-auto md:mx-0" 
-      src={LOGO} alt='logo' />
+      className="w-40 mx-auto md:mx-0" 
+      src={webflix} alt='logo' />
       </Link>
 
     {user && (<div className="flex p-2 mx-auto md:mx-0">
