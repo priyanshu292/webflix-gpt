@@ -13,7 +13,6 @@ const MovieInfo = () => {
   const [loading, setLoading] = useState(true); 
   const movieInfo = useSelector((store) => store.movies.movieInfo);
   const path = window.location.pathname;
-  console.log(movieInfo);
 
   const fetchMovie = async () => {
     try {
