@@ -9,11 +9,11 @@
         - Title & Description
         - Movie Suggestions
             - MovieLists * N
-- NetflixGPT
+- WebflixGPT
     - Search Bar
     - Movie Suggestions
 
-# Netflix GPT
+# Webflix GPT
 
 - Create React App
 - Configure TailwindCSS
