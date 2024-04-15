@@ -7,6 +7,7 @@ export const checkValidData = (email, password) => {
     if(!isEmailValid) return "Email Id is not valid.";
     if(!isPasswordValid) return "Make sure the password is at least 8 characters including a number and a Uppercase letter.";
 
+    //validation done
     return null;
 
 }
