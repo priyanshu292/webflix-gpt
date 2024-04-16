@@ -7,6 +7,14 @@ const MainContainer = () => {
 
     const movies = useSelector((store)=> store.movies?.nowPlayingMovies);
 
+    if(!movies) return (
+      <div className='bg-black text-white h-screen test-lg sm:text-xl md:text-2xl lg:text-4xl font-bold flex flex-col justify-center items-center p-4'>
+        <h2 className="text-center">
+          PLEASE USE VPN TO LOAD MOVIES...
+        </h2>
+      </div>
+    )
+
     if(movies === null) return; //EARLY RETURN
 
     const mainMovie = movies[0];
