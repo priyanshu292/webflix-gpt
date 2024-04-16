@@ -67,7 +67,7 @@ const Login = () => {
           alt="background"
         />
       </div>
-      <form onSubmit={(e) => e.preventDefault()} className="w-full sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-12 bg-black text-white bg-opacity-80 rounded-lg">
+      <form onSubmit={(e) => e.preventDefault()} className="w-[85%] sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-12 bg-black text-white bg-opacity-80 rounded-lg">
         <h1 className="font-bold text-3xl py-4">
           {isSignInForm ? "Sign In" : "Sign Up"}
         </h1>
