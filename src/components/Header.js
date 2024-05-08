@@ -10,8 +10,9 @@ import { toggleGptSearchView } from '../utils/gptSlice';
 import { IoSearch } from "react-icons/io5";
 import { changeLanguage } from '../utils/langSlice';
 import language from '../utils/language';
-import { IoMdHome } from "react-icons/io";
+//import { IoMdHome } from "react-icons/io";
 import webflix from "../assets/webflix.png"
+import AIlogo from "../assets/AIlogo.png"
 
 
 const Header = () => {
@@ -80,11 +81,11 @@ const Header = () => {
       )}
     
       {window.location.pathname === "/browse" && (
-        <button className='bg-gray-600 bg-opacity-70 text-white p-2 m-2 rounded-sm hover:bg-white hover:text-black' 
+        <button className='bg-black text-base rounded-full pl-2 pr-4 font-semibold text-white border-white border-2 p-2 m-2 hover:bg-white hover:text-black' 
         onClick={handleGptSearchClick}>
           <span className='flex items-center'>
-            {!showGptSearch && <IoSearch className='mr-1'/>}
-            {showGptSearch && <IoMdHome className='mr-1' />}
+            {!showGptSearch && <img src={AIlogo} alt="user icon" className="w-6 h-6"/>}
+            {showGptSearch && <img src={AIlogo} alt="user icon" className="w-6 h-6"/>}
             {showGptSearch ? language[myLang].home : "GPT Search"}
           </span>
         </button>

@@ -20,3 +20,6 @@ export const SUPPORTED_LANG = [
 ];
 
 export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY;
+
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+export const genAI = new GoogleGenerativeAI("AIzaSyCPKxV87yUypJMTndSdJ7jyl9agKIi2azQ");

@@ -1,7 +1,8 @@
 import React, { useRef } from "react";
 import language from "../utils/language";
 import { useDispatch, useSelector } from "react-redux";
-import openai from "../utils/openai"
+//import openai from "../utils/openai"
+import { genAI } from "../utils/constants";
 import { API_OPTIONS } from "../utils/constants";
 import { addGptMovieResult } from "../utils/gptSlice"
 
@@ -24,21 +25,29 @@ const GptSearchBar = () => {
   const handleGptSearch = async() => { 
     // Make an API call to GPT API and get Movie Results
 
-    const gptQuery = "Act as a Movie Recommendation System and suggest some movies for the query : " + searchText.current.value + ". only give me names of 5 movies, comma seperated like the example result given ahead. Example Results: Gadar, Sholay, Don, Golmaal, Koi Mil Gaya";
+     const gptQuery = "Act as a Movie Recommendation System and suggest some movies for the query : " + searchText.current.value + ". only give me names of 5 movies, comma seperated like the example result given ahead. Example Results: Gadar, Sholay, Don, Golmaal, Koi Mil Gaya";
 
-     const gptResults = await openai.chat.completions.create({
-        messages: [{ role: 'user', content: gptQuery }],
-        model: 'gpt-3.5-turbo',
-      });
+    //  const gptResults = await openai.chat.completions.create({
+    //     messages: [{ role: 'user', content: gptQuery }],
+    //     model: 'gpt-3.5-turbo',
+    //   });
 
-      if(!gptResults?.choices){
-        //TODO write error handling
-      }
+    //   if(!gptResults?.choices){
+    //     //TODO write error handling
+    //   }
+
+    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const result = await model.generateContent(gptQuery);
+    const response = await result.response;
+    const gptResults = response.text();
+
+    const gptMovies = gptResults.split(",");
     
-    const gptMovies = gptResults.choices?.[0]?.message?.content.split(",");
+    //const gptMovies = gptResults.choices?.[0]?.message?.content.split(",");
     
     //For each movie i will search TMDB API.
-    const promiseArray = gptMovies.map((movie)=>searchMovieTMDB(movie)); //it returns me 5 Promises because search is a async function.
+    const promiseArray = gptMovies.map((movie)=>searchMovieTMDB(movie)); //it returns me 5 Promises because search        
+    //is a async function.
 
     const finalResults = await Promise.all(promiseArray);
 
